@@ -1,5 +1,5 @@
 name: 'AgentTrust Security Scanner'
-description: 'Scan SKILL.md files, MCP manifests, and source code for malware, prompt injection, and 47 other threat patterns. x402-native, no API keys required.'
+description: 'Scan SKILL.md files and MCP manifests for malware, prompt injection, and 47 threat patterns. x402-native.'
 author: 'poteshniy'
 
 branding:
