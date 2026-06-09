@@ -1,0 +1,65 @@
+name: 'AgentTrust Security Scanner'
+description: 'Scan SKILL.md files, MCP manifests, and source code for malware, prompt injection, and 47 other threat patterns. x402-native, no API keys required.'
+author: 'poteshniy'
+
+branding:
+  icon: 'shield'
+  color: 'green'
+
+inputs:
+  path:
+    description: 'Path to scan (file or directory)'
+    required: false
+    default: '.'
+  
+  fail_on:
+    description: 'Minimum level to fail the action: CRITICAL, HIGH, MEDIUM, SAFE'
+    required: false
+    default: 'CRITICAL'
+  
+  scan_skills:
+    description: 'Scan SKILL.md files'
+    required: false
+    default: 'true'
+  
+  scan_mcp:
+    description: 'Scan MCP manifest JSON files'
+    required: false
+    default: 'true'
+  
+  scan_source:
+    description: 'Scan source code files (.js, .ts, .py)'
+    required: false
+    default: 'true'
+
+  paid:
+    description: 'Use full paid scan (40/50 rules). Requires x402_wallet.'
+    required: false
+    default: 'false'
+
+  x402_wallet:
+    description: 'Private key for x402 payments (required for paid scan)'
+    required: false
+    default: ''
+
+  api_url:
+    description: 'AgentTrust API URL (override for self-hosted)'
+    required: false
+    default: 'https://agenttrust.uk'
+
+outputs:
+  result:
+    description: 'JSON summary of scan results'
+  
+  worst_level:
+    description: 'Worst threat level found: SAFE, MEDIUM, HIGH, CRITICAL'
+  
+  findings_total:
+    description: 'Total number of findings across all scanned files'
+  
+  v_gate:
+    description: 'ACT or HALT — unified gate decision'
+
+runs:
+  using: 'node20'
+  main: 'dist/index.js'
